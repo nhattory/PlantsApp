@@ -50,6 +50,11 @@
             android:exported="false">
         </activity>
 
+        <activity
+            android:name=".AddPlantActivity"
+            android:exported="false">
+        </activity>
+
     </application>
 
 

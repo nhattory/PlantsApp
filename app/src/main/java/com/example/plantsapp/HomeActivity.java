@@ -23,7 +23,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
         // Set the default selected fragment
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragmentContainerView, new fm_home())
+                .replace(R.id.fragmentContainerView, new fm_home(this))
                 .commit();
     }
 
@@ -33,7 +33,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         switch (item.getItemId()) {
             case R.id.btn_home:
                 System.out.println("profile");
-                selectedFragment = new fm_home();
+                selectedFragment = new fm_home(this);
                 break;
             case R.id.btn_profile:
                 System.out.println("profile");
