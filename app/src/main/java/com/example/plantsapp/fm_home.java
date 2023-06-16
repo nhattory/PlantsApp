@@ -1,12 +1,27 @@
 package com.example.plantsapp;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,12 +34,19 @@ public class fm_home extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    public static final int CAMERA_REQUEST_CODE = 1;
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_IMAGE_PICK = 2;
+    private static Activity mActivity;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    ImageView btn_add;
 
-    public fm_home() {
+
+    public fm_home(Activity activity) {
+        this.mActivity = activity;
         // Required empty public constructor
     }
 
@@ -38,7 +60,7 @@ public class fm_home extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static fm_home newInstance(String param1, String param2) {
-        fm_home fragment = new fm_home();
+        fm_home fragment = new fm_home(new Activity());
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +81,16 @@ public class fm_home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fm_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_fm_home, container, false);
+        btn_add = view.findViewById(R.id.btn_add);
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển sang màn hình mới
+                Intent intent = new Intent(getActivity(), AddPlantActivity.class);
+                startActivity(intent);
+            }
+        });
+        return view;
     }
 }
