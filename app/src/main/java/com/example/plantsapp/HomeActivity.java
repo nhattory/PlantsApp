@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
                 break;
             case R.id.btn_add:
                 System.out.println("add");
-                selectedFragment = new fm_add();
+                selectedFragment = new fm_add(this);
                 break;
         }
         if (selectedFragment != null) {

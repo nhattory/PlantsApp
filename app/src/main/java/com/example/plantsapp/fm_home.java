@@ -77,31 +77,6 @@ public class fm_home extends Fragment {
         }
     }
 
-
-    private String saveImageToStorage(Bitmap imageBitmap) {
-        String imagePath = null;
-        try {
-            // Tạo tệp tin mới trong thư mục lưu trữ ứng dụng
-            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-            String imageFileName = "IMG_" + timeStamp + ".jpg";
-            File storageDir = mActivity.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-            File imageFile = new File(storageDir, imageFileName);
-
-            // Mở luồng ghi vào tệp tin
-            FileOutputStream outputStream = new FileOutputStream(imageFile);
-            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
-            outputStream.flush();
-            outputStream.close();
-
-            // Lấy đường dẫn tuyệt đối của tệp tin
-            imagePath = imageFile.getAbsolutePath();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return imagePath;
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -110,13 +85,10 @@ public class fm_home extends Fragment {
         btn_add = view.findViewById(R.id.btn_add);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                try {
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(intent, CAMERA_REQUEST_CODE);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            public void onClick(View v) {
+                // Chuyển sang màn hình mới
+                Intent intent = new Intent(getActivity(), AddPlantActivity.class);
+                startActivity(intent);
             }
         });
         return view;

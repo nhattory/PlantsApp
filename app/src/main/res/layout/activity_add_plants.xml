@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:srcCompat="@drawable/add_image" />
     </LinearLayout>
 
     <LinearLayout
@@ -36,28 +36,49 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="35dp"
+                    android:textColor="@color/white"
+                    android:text="Plant Name"
+                    android:textSize="20dp" />
+
                 <EditText
                     android:id="@+id/add_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="32dp"
                     android:background="@drawable/edittext_background"
                     android:ems="10"
-                    android:hint="Name"
+                    android:hint="Daisy, Rose, ..."
                     android:inputType="textPersonName"
                     android:padding="16dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:textSize="24sp" />
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="35dp"
+                    android:textColor="@color/white"
+                    android:text="Plant Familly"
+                    android:textSize="20dp" />
 
                 <EditText
                     android:id="@+id/add_family"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="32dp"
                     android:background="@drawable/edittext_background"
                     android:drawablePadding="16dp"
@@ -68,16 +89,25 @@
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:textSize="24sp" />
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="35dp"
+                    android:textColor="@color/white"
+                    android:text="Plant Kingdom"
+                    android:textSize="20dp" />
 
                 <EditText
                     android:id="@+id/add_kingdom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="32dp"
                     android:background="@drawable/edittext_background"
-
                     android:drawablePadding="16dp"
                     android:ems="10"
                     android:hint="Kingdom"
@@ -86,13 +116,23 @@
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:textSize="24sp" />
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="35dp"
+                    android:textColor="@color/white"
+                    android:text="Plant Description"
+                    android:textSize="20dp" />
 
                 <EditText
                     android:id="@+id/add_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="32dp"
                     android:background="@drawable/edittext_background"
                     android:drawablePadding="16dp"
@@ -103,13 +143,23 @@
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:textSize="24sp" />
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="35dp"
+                    android:textColor="@color/white"
+                    android:text="Plant Hagtag"
+                    android:textSize="20dp" />
 
                 <EditText
                     android:id="@+id/add_hagtag"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="32dp"
                     android:background="@drawable/edittext_background"
                     android:drawablePadding="16dp"
