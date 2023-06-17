@@ -46,6 +46,7 @@
 
         <activity
             android:name=".HomeActivity"
+            android:theme="@style/Theme.Fab_Bottom_app_bar"
             android:exported="false">
         </activity>
 
