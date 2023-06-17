@@ -14,6 +14,7 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import java.io.File;
@@ -42,14 +43,16 @@ public class fm_home extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    ImageView btn_add;
+    ImageView btn_add, btn_species, btn_article;
 
 
     public fm_home(Activity activity) {
         this.mActivity = activity;
         // Required empty public constructor
     }
-
+    public interface OnBackPressedListener {
+        void onBackPressed();
+    }
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -82,15 +85,42 @@ public class fm_home extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_fm_home, container, false);
+
         btn_add = view.findViewById(R.id.btn_add);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Chuyển sang màn hình mới
+                System.out.println("// Chuyển sang màn hình mới");
                 Intent intent = new Intent(getActivity(), AddPlantActivity.class);
                 startActivity(intent);
+                mActivity.finish();
             }
         });
+
+        btn_species = view.findViewById(R.id.btn_species);
+        btn_species.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("//ccccccccccccccccccccc");
+                Intent intent = new Intent(getActivity(), SpiecesActivity.class);
+                startActivity(intent);
+                mActivity.finish();
+
+            }
+        });
+
+        btn_article = view.findViewById(R.id.btn_article);
+        btn_article.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("//ddddddddddddddddddddddd");
+                Intent intent = new Intent(getActivity(), ArticleActivity.class);
+                startActivity(intent);
+                mActivity.finish();
+            }
+        });
+
         return view;
     }
 }

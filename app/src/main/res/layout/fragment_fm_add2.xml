@@ -15,8 +15,8 @@
         android:gravity="center">
 
         <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center">
 
             <FrameLayout
@@ -27,6 +27,7 @@
                     android:id="@+id/textView12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#050101"
                     android:text="Add Picture"
                     android:textAlignment="center"
                     android:textAllCaps="true"
@@ -35,9 +36,10 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_add_image"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/image_add" />
 
             </FrameLayout>
@@ -45,8 +47,8 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center">
 
             <FrameLayout
@@ -57,7 +59,8 @@
                     android:id="@+id/textView14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Add Picture"
+                    android:background="#000104"
+                    android:text="Back to home"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="#FFFFFF"
@@ -65,9 +68,10 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/btn_back"
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:src="@drawable/back" />
             </FrameLayout>

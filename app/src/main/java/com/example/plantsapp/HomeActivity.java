@@ -1,6 +1,8 @@
 package com.example.plantsapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,10 +15,11 @@ import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class HomeActivity extends AppCompatActivity implements fm_home.OnBackPressedListener, BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     FloatingActionButton btn_add;
     private Fragment selectedFragment = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +32,33 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragmentContainerView, new fm_home(this))
                 .commit();
-        btn_add = (FloatingActionButton) findViewById(R.id.floatingActionButton2);
-        btn_add.setOnClickListener(HomeActivity.this);
+
+        btn_add = findViewById(R.id.floatingActionButton2);
+        btn_add.setOnClickListener(this);
+        hideSystemNavigationBar();
+    }
+    private void hideSystemNavigationBar() {
+        // Kiểm tra phiên bản Android
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            // Ẩn thanh điều hướng hệ thống
+            View decorView = getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+            decorView.setSystemUiVisibility(uiOptions);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
+        if (fragment instanceof fm_home) {
+            // Quay lại fragment "home" khi người dùng nhấn nút back
+            selectedFragment = new fm_home(this);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentContainerView, selectedFragment)
+                    .commit();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -44,6 +72,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.person:
                 System.out.println("profile");
                 selectedFragment = new fm_profile();
+                break;
+            case R.id.placeholder:
+                selectedFragment = new fm_add(this);
                 break;
         }
 

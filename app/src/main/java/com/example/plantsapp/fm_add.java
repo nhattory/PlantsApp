@@ -1,33 +1,54 @@
 package com.example.plantsapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 public class fm_add extends Fragment {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
-    Activity mActivity = new Activity();
+    Activity mActivity = null;
 
+    ImageView btn_open,btn_back;
     public fm_add(Activity activity) {
         this.mActivity = activity;
-        // Required empty public constructor
+
     }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_fm_add2, container, false);
-
         dispatchTakePictureIntent();
+        btn_open = rootView.findViewById(R.id.btn_add_image);
+        btn_open.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dispatchTakePictureIntent ();
+            }
+        });
+
+        btn_back = rootView.findViewById(R.id.btn_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mActivity, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return rootView;
     }
 
@@ -52,4 +73,5 @@ public class fm_add extends Fragment {
             startActivity(intent);
         }
     }
+
 }
