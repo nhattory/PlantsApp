@@ -2,11 +2,19 @@ package com.example.plantsapp;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,44 +23,8 @@ import android.view.ViewGroup;
  */
 public class fm_profile extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     public fm_profile() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fm_profile.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static fm_profile newInstance(String param1, String param2) {
-        fm_profile fragment = new fm_profile();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -60,5 +32,38 @@ public class fm_profile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_fm_profile2, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Ánh xạ các thành phần UI trong giao diện
+        TextView textView4 = view.findViewById(R.id.textView4);
+        TextView textView5 = view.findViewById(R.id.textView5);
+        ImageView imgAvt = view.findViewById(R.id.img_avt);
+        TabLayout tabLayout = view.findViewById(R.id.tab_layout);
+        ViewPager2 viewPager = view.findViewById(R.id.view_paper);
+
+        // Thiết lập các thông tin và xử lý UI tại đây
+
+        // Ví dụ: Thiết lập text cho TextView
+        textView4.setText("Hello Tory,");
+        textView5.setText("Let's Learn More About Plants");
+
+        // Ví dụ: Gán hình ảnh cho ImageView
+        imgAvt.setImageResource(R.drawable.plant);
+
+        // Ví dụ: Thiết lập Adapter cho ViewPager2 và đặt TabLayout kết hợp
+        ProfileAdapter adapter = new ProfileAdapter(getChildFragmentManager(), getLifecycle());
+        viewPager.setAdapter(adapter);
+
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+            if (position == 0) {
+                tab.setText("Species");
+            } else if (position == 1) {
+                tab.setText("Article");
+            }
+        }).attach();
     }
 }

@@ -18,6 +18,7 @@ class RecyclerViewAdapter(private val mDataArray: ArrayList<String>?) :
     private val mSections = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#"
     private var sectionsTranslator = HashMap<Int, Int>()
     private var mSectionPositions: ArrayList<Int>? = null
+    private var itemClickListener: OnItemClickListener? = null
 
     override fun getItemCount(): Int {
         return mDataArray?.size ?: 0
@@ -34,6 +35,9 @@ class RecyclerViewAdapter(private val mDataArray: ArrayList<String>?) :
         holder.mImageButton.setOnClickListener {
             mDataArray.removeAt(holder.adapterPosition)
             notifyItemRemoved(position)
+        }
+        holder.itemView.setOnClickListener {
+            itemClickListener?.onItemClick(mDataArray[position])
         }
     }
 
@@ -66,6 +70,14 @@ class RecyclerViewAdapter(private val mDataArray: ArrayList<String>?) :
 
     override fun getPositionForSection(sectionIndex: Int): Int {
         return mSectionPositions!![sectionsTranslator[sectionIndex]!!]
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.itemClickListener = listener
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(item: String)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -35,9 +35,7 @@ public class fm_home extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    public static final int CAMERA_REQUEST_CODE = 1;
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
-    private static final int REQUEST_IMAGE_PICK = 2;
+
     private static Activity mActivity;
 
     // TODO: Rename and change types of parameters
@@ -48,11 +46,8 @@ public class fm_home extends Fragment {
 
     public fm_home(Activity activity) {
         this.mActivity = activity;
-        // Required empty public constructor
     }
-    public interface OnBackPressedListener {
-        void onBackPressed();
-    }
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -83,15 +78,13 @@ public class fm_home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_fm_home, container, false);
 
         btn_add = view.findViewById(R.id.btn_add);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Chuyển sang màn hình mới
-                System.out.println("// Chuyển sang màn hình mới");
                 Intent intent = new Intent(getActivity(), AddPlantActivity.class);
                 startActivity(intent);
                 mActivity.finish();
@@ -102,11 +95,9 @@ public class fm_home extends Fragment {
         btn_species.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("//ccccccccccccccccccccc");
                 Intent intent = new Intent(getActivity(), SpiecesActivity.class);
                 startActivity(intent);
                 mActivity.finish();
-
             }
         });
 
@@ -114,7 +105,6 @@ public class fm_home extends Fragment {
         btn_article.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("//ddddddddddddddddddddddd");
                 Intent intent = new Intent(getActivity(), ArticleActivity.class);
                 startActivity(intent);
                 mActivity.finish();

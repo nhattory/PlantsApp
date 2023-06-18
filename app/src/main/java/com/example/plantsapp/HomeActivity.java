@@ -15,7 +15,7 @@ import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class HomeActivity extends AppCompatActivity implements fm_home.OnBackPressedListener, BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     FloatingActionButton btn_add;
     private Fragment selectedFragment = null;
