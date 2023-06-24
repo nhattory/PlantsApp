@@ -5,9 +5,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.EmailAuthProvider
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
     var btn_login: ImageView? = null
@@ -17,6 +22,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     var txt_password: EditText? = null
     var txt_create_account: TextView? = null
     var txt_reset: TextView? = null
+    private lateinit var progressBar: ProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -40,7 +46,34 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.btn_signup -> {startActivity(Intent(this, HomeActivity::class.java))}
+            R.id.btn_signup -> {
+                val email = txt_email?.text.toString()
+                val password = txt_password?.text.toString()
+                // Kiểm tra email và password trên Authentication
+                val auth = FirebaseAuth.getInstance()
+                val credentials = EmailAuthProvider.getCredential(email, password)
+                auth.signInWithCredential(credentials)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // Đăng nhập thành công
+                            Toast.makeText(this@LoginActivity, "Log In Succeed", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
+                        } else {
+                            val exception = task.exception
+                            if (exception is FirebaseAuthInvalidCredentialsException) {
+                                // Sai email hoặc password
+
+                                Toast.makeText(this@LoginActivity, "Wrong email or password, please enter correct email and password", Toast.LENGTH_SHORT).show()
+
+                            } else {
+
+                                progressBar.visibility = View.VISIBLE
+                                Toast.makeText(this@LoginActivity, "Account not registered", Toast.LENGTH_SHORT).show()
+
+                            }
+                        }
+                    }
+            }
             R.id.btn_facebook -> {
                 println("facebook")
             }
@@ -51,7 +84,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, SignupActivity::class.java))
             }
             R.id.txt_reset -> {
-                startActivity(Intent(this, ResetActicity::class.java))
+                startActivity(Intent(this, ResetPassActivity::class.java))
             }
         }
     }

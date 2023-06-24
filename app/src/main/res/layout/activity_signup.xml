@@ -104,6 +104,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/shape_btn_signup" />
 
+
     </LinearLayout>
 
     <LinearLayout
@@ -128,4 +129,5 @@
             android:textSize="20dp"
             android:textStyle="bold" />
     </LinearLayout>
+
 </LinearLayout>

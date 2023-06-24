@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,57 +17,43 @@
         android:theme="@style/Theme.PlantsApp"
         tools:targetApi="31">
         <activity
+            android:name=".ResetPassActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ResetPWActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashTheme"
             android:exported="true"
             android:theme="@style/Theme.PlashSrceen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".StartedActivity"
-            android:exported="false">
-        </activity>
-
+            android:exported="false" />
         <activity
-            android:name="SignupActivity"
-            android:exported="false">
-        </activity>
-
+            android:name=".SignupActivity"
+            android:exported="false" />
         <activity
-            android:name="LoginActivity"
-            android:exported="false">
-        </activity>
-
-        <activity
-            android:name=".ResetActicity"
-            android:exported="false">
-        </activity>
-
+            android:name=".LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".HomeActivity"
-            android:theme="@style/Theme.Fab_Bottom_app_bar"
-            android:exported="false">
-        </activity>
-
+            android:exported="false"
+            android:theme="@style/Theme.Fab_Bottom_app_bar" />
         <activity
             android:name=".AddPlantActivity"
-            android:exported="false">
-        </activity>
-
+            android:exported="false" />
         <activity
             android:name=".SpiecesActivity"
-            android:exported="false">
-        </activity>
-
+            android:exported="false" />
         <activity
             android:name=".ArticleActivity"
-            android:exported="false">
-        </activity>
-
+            android:exported="false" />
     </application>
-
 
 </manifest>
